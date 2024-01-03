@@ -289,6 +289,35 @@ function isContainNumber(num, digit) {
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
 function getBalanceIndex(/* arr */) {
+  // let halfArr1 = 0;
+  // let halfArr2 = 0;
+  // let result = -1;
+  // let halfArr = 0;
+  // if (arr.length % 2 === 0) {
+  //   halfArr += arr.length / 2;
+  //   for (let i = 0; i < halfArr - 2; i += 1) {
+  //     halfArr1 += arr[i];
+  //   }
+  //   for (let z = arr.length; z >= arr.length - halfArr; z -= 1) {
+  //     halfArr2 += arr[z];
+  //   }
+  //   if (halfArr1 === halfArr2) {
+  //     result = halfArr;
+  //   }
+  // }
+  // if (arr.length % 2 === 1) {
+  //   halfArr += (arr.length - 1) / 2;
+  //   for (let i = 0; i < halfArr - 2; i += 1) {
+  //     halfArr1 += arr[i];
+  //   }
+  //   for (let z = arr.length; z >= arr.length - halfArr; z -= 1) {
+  //     halfArr2 += arr[z];
+  //   }
+  //   if (halfArr1 === halfArr2) {
+  //     result = halfArr + 1;
+  //   }
+  // }
+  // return result;
   throw new Error('Not implemented');
 }
 
@@ -371,8 +400,31 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let o = 0;
+  let str1 = '';
+  let resultStr = '';
+  let result = '';
+  function changeLetter(n) {
+    for (let i = 0; i <= n.length - 1; i += 1) {
+      if (i === 0 || i % 2 === 0) {
+        resultStr += n[i];
+      } else {
+        str1 += n[i];
+      }
+    }
+    result = resultStr + str1;
+    str1 = '';
+    resultStr = '';
+    return result;
+  }
+  changeLetter(str);
+  o += 1;
+  while (o < iterations) {
+    changeLetter(result);
+    o += 1;
+  }
+  return result;
 }
 
 /**
