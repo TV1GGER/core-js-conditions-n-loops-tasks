@@ -167,8 +167,42 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  const numArr = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+  let resultStr = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    if (i >= 1) {
+      resultStr += ' ';
+    }
+    switch (numberStr[i]) {
+      case '.':
+        resultStr += 'point';
+        break;
+      case ',':
+        resultStr += 'point';
+        break;
+      case '-':
+        resultStr += 'minus';
+        break;
+      case '+':
+        resultStr += 'plus';
+        break;
+      default:
+        resultStr += `${numArr[Number(numberStr[i])]}`;
+    }
+  }
+  return resultStr;
 }
 
 /**
